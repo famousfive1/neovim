@@ -81,18 +81,26 @@ local plugins_spec = {
 
 			-- Document existing key chains
 			spec = {
-				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>t", group = "[T]oggle" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader>f", group = "Find" },
+				{ "<leader>t", group = "Toggle" },
+				{ "<leader>h", group = "Git Hunk", mode = { "n", "v" } },
 			},
 		},
 	},
-    
+
     -- Collection of various small independent plugins/modules
     {
 		"echasnovski/mini.nvim",
 		config = function()
-			require("mini.ai").setup({ n_lines = 500 })
+            require("mini.ai").setup({ n_lines = 500 })
+            require('mini.pairs').setup()
+            require("mini.completion").setup()
+            local map_multistep = require('mini.keymap').map_multistep
+
+            map_multistep('i', '<Tab>',   { 'pmenu_next' })
+            map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
+            map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
+            map_multistep('i', '<BS>',    { 'minipairs_bs' })
 		end,
 	},
 
@@ -141,15 +149,13 @@ local plugins_spec = {
         "ibhagwan/fzf-lua",
         dependencies = { "echasnovski/mini.icons" },
         keys = {
-            { "<leader>sf", "<cmd>FzfLua files<cr>", desc = "Files" },
+            { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Files" },
             { "<leader><leader>", "<cmd>FzfLua buffers<cr>", desc = "Search Buffers" },
             { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep Project" },
-            { "<leader>sh", "<cmd>FzfLua helptags<cr>", desc = "Help" },
-            { "<leader>sk", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
-            { "<leader>ss", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "In Buffer" },
-            { "<leader>sb", "<cmd>FzfLua builtin<cr>", desc = "Builtin" },
-        },
-        opts = {
+            { "<leader>fh", "<cmd>FzfLua helptags<cr>", desc = "Help" },
+            { "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
+            { "<leader>fs", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "In Buffer" },
+            { "<leader>fb", "<cmd>FzfLua builtin<cr>", desc = "Builtin" },
         },
     },
 
@@ -169,14 +175,17 @@ local plugins_spec = {
 	},
 
     {
-        "neovim/nvim-lspconfig",
-        config = function()
-            vim.lsp.enable("lua_ls")
-            vim.lsp.config("clangd", {
-                cmd = { "clangd", "--query-driver=C:/msys64/ucrt64/bin/g++.exe" },
-            })
-            vim.lsp.enable("clangd")
-        end,
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons", -- optional, but recommended
+        },
+        keys = {
+            { "<leader>e", "<cmd>Neotree focus toggle<cr>", desc = "Toggle Neotree" }
+        },
+        lazy = false, -- neo-tree will lazily load itself
     },
 
     { "catppuccin/nvim", name = "catppuccin" },
