@@ -40,6 +40,7 @@ local plugins_spec = {
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		opts = {
+            preset = "helix",
 			delay = 0,
 			icons = {
 				-- set icon mappings to true if you have a Nerd Font
@@ -145,8 +146,11 @@ local plugins_spec = {
             { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep Project" },
             { "<leader>sh", "<cmd>FzfLua helptags<cr>", desc = "Help" },
             { "<leader>sk", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
-            { "<leader>sg", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "In Buffer" },
-        }
+            { "<leader>ss", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "In Buffer" },
+            { "<leader>sb", "<cmd>FzfLua builtin<cr>", desc = "Builtin" },
+        },
+        opts = {
+        },
     },
 
 	{
@@ -175,19 +179,17 @@ local plugins_spec = {
         end,
     },
 
-	{
-		"folke/tokyonight.nvim",
-		priority = 1000, -- Make sure to load this before all the other start plugins.
-		config = function()
-			---@diagnostic disable-next-line: missing-fields
-			require("tokyonight").setup({
-				styles = {
-					comments = { italic = false }, -- Disable italics in comments
-				},
-			})
-			vim.cmd.colorscheme("tokyonight-night")
-		end,
-	},
+    { "catppuccin/nvim", name = "catppuccin" },
+
+	{ "folke/tokyonight.nvim" },
+
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        config = function()
+            vim.cmd("colorscheme rose-pine")
+        end
+    }
 }
 
 -- Setup lazy.nvim
