@@ -40,7 +40,7 @@ local plugins_spec = {
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		opts = {
-            preset = "helix",
+            preset = "modern",
 			delay = 0,
 			icons = {
 				-- set icon mappings to true if you have a Nerd Font
@@ -89,16 +89,34 @@ local plugins_spec = {
 		},
 	},
 
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        ---@module "ibl"
+        ---@type ibl.config
+        opts = {},
+    },
+
     -- Collection of various small independent plugins/modules
     {
 		"echasnovski/mini.nvim",
+        event = "VimEnter",
 		config = function()
             require("mini.ai").setup({ n_lines = 500 })
             require('mini.pairs').setup()
+            require('mini.icons').setup()
+            require('mini.starter').setup()
+            require('mini.statusline').setup()
             require('mini.move').setup()
             require('mini.snippets').setup()
-            require("mini.completion").setup()
-            require("mini.files").setup()
+            require('mini.completion').setup()
+            require("mini.files").setup({
+                mappings = {
+                    go_in = "<CR>",
+                    go_out = "<BS>",
+                    reset = "r",
+                }
+            })
             require("mini.pick").setup()
             require("mini.extra").setup()
 
@@ -115,6 +133,7 @@ local plugins_spec = {
             { "<leader>/", function() MiniExtra.pickers.buf_lines({ scope = "current" }) end, desc = "Find in Buffer" },
             { "<leader>:", function() MiniExtra.pickers.history({ scope = "cmd" }) end, desc = "Command History" },
             -- find
+            { "<leader><space>", function() MiniPick.builtin.files() end, desc = "Find Files" },
             { "<leader>fb", function() MiniPick.builtin.buffers() end, desc = "Buffers" },
             { "<leader>fc", function() MiniPick.builtin.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
             { "<leader>fg", function() MiniExtra.pickers.git_files() end, desc = "Find Git Files" },
@@ -141,12 +160,14 @@ local plugins_spec = {
 
     {
         "j-hui/fidget.nvim",
+        event = "BufEnter",
         opts = {},
     },
 
     -- Highlight, edit, and navigate code
 	{
 		"nvim-treesitter/nvim-treesitter",
+        event = "BufEnter",
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		opts = {
@@ -175,6 +196,7 @@ local plugins_spec = {
 
 	{
 		"folke/lazydev.nvim",
+        event = "BufEnter",
 		ft = "lua",
 		opts = {
 			library = {
@@ -304,7 +326,7 @@ local plugins_spec = {
             local harpoon = require("harpoon")
             harpoon:setup()
 
-            vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+            vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Harpoon Add" })
             vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
             vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
