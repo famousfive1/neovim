@@ -6,7 +6,6 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Scroll down and center the cursor
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Scroll up and center the cursor
 vim.keymap.set("n", "n", "nzz") -- Scroll up and center the cursor
 vim.keymap.set("n", "N", "Nzz") -- Scroll up and center the cursor
-vim.keymap.set("v", "<leader>p", '"_dP', { desc = "Paste without overwriting the default register" })
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>") -- Exit terminal mode
 
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
@@ -17,3 +16,7 @@ vim.keymap.set("n", "<leader>q", "<C-w>q", { desc = "Close Window" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Clipboard
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from Sys Clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to Sys Clipboard" })
