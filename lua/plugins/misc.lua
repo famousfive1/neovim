@@ -1,11 +1,12 @@
 return {
     {
         "NMAC427/guess-indent.nvim",
-        event = "VeryLazy",
+        event = "BufEnter",
     },
 
     {
         "lewis6991/gitsigns.nvim",
+        event = "BufEnter",
         opts = {
             signs = {
                 add = { text = "+" },
