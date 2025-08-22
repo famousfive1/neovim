@@ -27,6 +27,7 @@ vim.opt.hlsearch = false -- Disable highlighting of search results
 vim.opt.mouse = "a"
 vim.opt.confirm = true
 vim.opt.winborder = "rounded"
+vim.o.showmode = false
 
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
 
