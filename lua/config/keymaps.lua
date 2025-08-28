@@ -15,7 +15,15 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
 vim.keymap.set("n", "<leader>q", "<C-w>q", { desc = "Close Window" })
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>d", "<C-w>d", { desc = "Open Diagnostic Float" })
+vim.keymap.set("n", "<leader>D", vim.diagnostic.setloclist, { desc = "Open Diagnostic Quickfix List" })
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
+vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { nowait = true, desc = "References" })
+vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+vim.keymap.set("n", "<leader>gy", vim.lsp.buf.type_definition, { desc = "Goto T[y]pe Definition" })
+vim.keymap.set("n", "<leader>gs", vim.lsp.buf.document_symbol, { desc = "LSP Symbols" })
+vim.keymap.set("n", "<leader>gS", vim.lsp.buf.workspace_symbol, { desc = "LSP Workspace Symbols" })
 
 -- Clipboard
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from Sys Clipboard" })
