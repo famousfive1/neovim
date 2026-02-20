@@ -17,6 +17,7 @@ vim.keymap.set("n", "<leader>q", "<C-w>q", { desc = "Close Window" })
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open Diagnostic Float" })
 vim.keymap.set("n", "<leader>D", vim.diagnostic.setloclist, { desc = "Open Diagnostic Quickfix List" })
+vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, { desc = "Goto Definition" })
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
 vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
 vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { nowait = true, desc = "References" })

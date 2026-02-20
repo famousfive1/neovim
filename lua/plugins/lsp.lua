@@ -1,5 +1,9 @@
 return {
     {
+        "neovim/nvim-lspconfig",
+        lazy = false
+    },
+    {
         "j-hui/fidget.nvim",
         event = "BufEnter",
         opts = {},
