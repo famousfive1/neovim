@@ -42,7 +42,6 @@ return {
         -- Document existing key chains
         spec = {
             { "<leader>s", group = "Search" },
-            { "<leader>g", group = "LSP" },
             { "<leader>u", group = "User Settings" },
             { "<leader>f", group = "Find" },
             { "gr", group = "LSP" },
