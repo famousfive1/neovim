@@ -1,26 +1,26 @@
 vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 
 require('snacks').setup({
-        bigfile = { enabled = true },
-        dashboard = { enabled = false },
-        explorer = { enabled = false },
-        indent = { enabled = true, animate = { enabled = false } },
-        input = { enabled = false },
-        notifier = {
-            enabled = true,
-            timeout = 3000,
-        },
-        picker = { enabled = true },
-        quickfile = { enabled = true },
-        scope = { enabled = true },
-        scroll = { enabled = true },
-        statuscolumn = { enabled = true },
-        words = { enabled = false },
-        styles = {
-            notification = {
-                -- wo = { wrap = true } -- Wrap notifications
-            }
+    bigfile = { enabled = true },
+    dashboard = { enabled = false },
+    explorer = { enabled = false },
+    indent = { enabled = true, animate = { enabled = false } },
+    input = { enabled = false },
+    notifier = {
+        enabled = true,
+        timeout = 3000,
+    },
+    picker = { enabled = true },
+    quickfile = { enabled = true },
+    scope = { enabled = true },
+    scroll = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = false },
+    styles = {
+        notification = {
+            -- wo = { wrap = true } -- Wrap notifications
         }
+    }
 })
 
 -- Top Pickers & Explorer
