@@ -11,7 +11,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
-vim.keymap.set("n", "<leader>q", "<C-w>q", { desc = "Close Window" })
+vim.keymap.set("n", "<leader>q", "<cmd>bdelete<cr>", { desc = "Close Window" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open Diagnostic Float" })
@@ -21,6 +21,7 @@ vim.keymap.set("n", "<leader>D", vim.diagnostic.setloclist, { desc = "Open Diagn
 vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "Code Action" })
 vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, { desc = "Type Definition" })
+vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "LSP Completions" })
 
 
 -- Clipboard
