@@ -1,7 +1,7 @@
 vim.pack.add({ "https://github.com/folke/which-key.nvim" })
 require("which-key").setup({
     preset = "modern",
-    delay = 0,
+    delay = 100,
     icons = {
         -- set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
@@ -40,8 +40,6 @@ require("which-key").setup({
     -- Document existing key chains
     spec = {
         { "<leader>s", group = "Search" },
-        { "<leader>u", group = "User Settings" },
-        { "<leader>f", group = "Find" },
         { "gr", group = "LSP" },
     },
 })

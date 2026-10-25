@@ -13,10 +13,12 @@ require("gitsigns").setup({
         delete = { text = "_" },
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
+        untracked = { text = "." },
     },
 })
+vim.keymap.set("n", "<leader>g", require("gitsigns").preview_hunk_inline, { desc = "Preview Hunk Inline" })
 
-require("lualine").setup()
+require("lualine").setup({})
 
 require("flash").setup()
 vim.keymap.set({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash" })

@@ -3,7 +3,10 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animation_length = 0
 end
 
+require('vim._core.ui2').enable({})
+
 vim.g.have_nerd_font = true
+vim.g.clipboard = "osc52"
 
 vim.opt.guicursor = "i:block" -- Use block cursor in insert mode
 vim.opt.ignorecase = true -- Ignore case in search
@@ -22,7 +25,7 @@ vim.opt.cursorline = true -- Highlight the current line
 vim.opt.scrolloff = 8 -- Keep 8 lines above and below the cursor
 vim.opt.inccommand = "split" -- Shows the effects of a command incrementally in the buffer
 vim.opt.undofile = true -- Enable persistent undo
-vim.opt.completeopt = { "menuone", "popup", "noinsert" } -- Options for completion menu
+vim.opt.completeopt = { "menu", "menuone", "noselect", "fuzzy", "popup" } -- Options for completion menu
 vim.opt.hlsearch = false -- Disable highlighting of search results
 vim.opt.mouse = "a"
 vim.opt.confirm = true
