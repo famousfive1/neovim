@@ -1,9 +1,7 @@
 vim.pack.add({
-        "https://github.com/NMAC427/guess-indent.nvim",
-        "https://github.com/lewis6991/gitsigns.nvim",
-        "https://github.com/nvim-tree/nvim-web-devicons",
-        "https://github.com/nvim-lualine/lualine.nvim",
-        "https://github.com/folke/flash.nvim"
+    "https://github.com/NMAC427/guess-indent.nvim",
+    "https://github.com/lewis6991/gitsigns.nvim",
+    "https://github.com/folke/flash.nvim"
 })
 
 require("gitsigns").setup({
@@ -15,10 +13,9 @@ require("gitsigns").setup({
         changedelete = { text = "~" },
         untracked = { text = "." },
     },
+    signs_staged_enable = false
 })
 vim.keymap.set("n", "<leader>g", require("gitsigns").preview_hunk_inline, { desc = "Preview Hunk Inline" })
-
-require("lualine").setup({})
 
 require("flash").setup()
 vim.keymap.set({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash" })

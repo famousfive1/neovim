@@ -2,7 +2,6 @@ vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/j-hui/fidget.nvim",
     "https://github.com/folke/lazydev.nvim",
-    "https://github.com/mason-org/mason.nvim",
 })
 
 require("fidget").setup({})
@@ -11,7 +10,6 @@ require("lazydev").setup({
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
     },
 })
-require("mason").setup()
 
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")

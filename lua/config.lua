@@ -3,8 +3,6 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animation_length = 0
 end
 
-require('vim._core.ui2').enable({})
-
 vim.g.have_nerd_font = true
 vim.g.clipboard = "osc52"
 
@@ -24,27 +22,20 @@ vim.opt.wrap = false -- Disable line wrapping
 vim.opt.cursorline = true -- Highlight the current line
 vim.opt.scrolloff = 8 -- Keep 8 lines above and below the cursor
 vim.opt.inccommand = "split" -- Shows the effects of a command incrementally in the buffer
-vim.opt.undofile = true -- Enable persistent undo
 vim.opt.completeopt = { "menu", "menuone", "noselect", "fuzzy", "popup" } -- Options for completion menu
 vim.opt.hlsearch = false -- Disable highlighting of search results
 vim.opt.mouse = "a"
 vim.opt.confirm = true
 vim.opt.winborder = "rounded"
-vim.o.showmode = false
 
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
 
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-
 -- Highlight yanked text
-local highlight_group = augroup('YankHighlight', { clear = true })
-autocmd('TextYankPost', {
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
-        vim.highlight.on_yank({ timeout = 200 })
+        vim.highlight.on_yank({ timeout = 400 })
     end,
     group = highlight_group,
 })
-
--- vim: ts=2 sts=2 sw=2 et
