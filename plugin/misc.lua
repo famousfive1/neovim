@@ -4,17 +4,6 @@ vim.pack.add({
     "https://github.com/folke/flash.nvim"
 })
 
-require("gitsigns").setup({
-    signs = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-        untracked = { text = "." },
-    },
-    signs_staged_enable = false
-})
 vim.keymap.set("n", "<leader>g", require("gitsigns").preview_hunk_inline, { desc = "Preview Hunk Inline" })
 
 require("flash").setup()
