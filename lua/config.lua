@@ -28,6 +28,9 @@ vim.opt.mouse = "a"
 vim.opt.confirm = true
 vim.opt.winborder = "rounded"
 
+vim.opt.fillchars:append("diff: ,fold: ")
+vim.opt.diffopt:append("context:3")
+
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
 
 -- Highlight yanked text
